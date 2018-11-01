@@ -1,22 +1,11 @@
 package UserTest1;
 
-import com.google.gson.JsonElement;
-
 public class StandardResponse {
-    private StatusResponse status;
-    private String message;
-    private JsonElement data;
+    private StatusResponse statusResponse;
+    private User user;
 
-    public StandardResponse(StatusResponse status){
-        //..
+    public StandardResponse(StatusResponse statusResponse, User user){
+        this.statusResponse = statusResponse;
+        this.user = user;
     }
-
-    public StandardResponse(StatusResponse status, String message){
-        //..
-    }
-
-    public StandardResponse(StandardResponse status, JsonElement data){
-        //...
-    }
-
 }

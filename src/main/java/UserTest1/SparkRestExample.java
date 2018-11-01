@@ -13,7 +13,7 @@ public class SparkRestExample {
             res.type("application/json");
             User user = new Gson().fromJson(req.body(), User.class);
             userService.addUser(user);
-            return new Gson().toJson(new StandardResponse(StatusResponse.SUCCESS));
+            return new Gson().toJson(new StandardResponse(StatusResponse.SUCCESS, user));
         });
 
 //        get("/users", (req,res) -> {

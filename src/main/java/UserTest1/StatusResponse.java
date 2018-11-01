@@ -1,8 +1,8 @@
 package UserTest1;
 
 public enum StatusResponse {
-    SUCCESS("SUCCESS2"),
-    ERROR("ERROR2");
+    SUCCESS("SUCCESS"),
+    ERROR("ERROR");
 
     private final String status;
     StatusResponse(String status) {

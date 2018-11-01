@@ -1,7 +1,6 @@
 package UserTest1;
 
 import java.util.ArrayList;
-import java.util.Collection;
 
 public class Service implements UserService {
     private ArrayList<User> arrayList;
