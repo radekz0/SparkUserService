@@ -7,4 +7,5 @@ public interface UserService {
     public User getUser(String id);
     public ArrayList<User> getUsers();
     public boolean userExist(String id);
+    public void deleteUser(String id);
 }

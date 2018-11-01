@@ -3,10 +3,12 @@ package UserTest1;
 import java.util.ArrayList;
 
 public class Service implements UserService {
-    private ArrayList<User> arrayList;
+    //Saving created users in an arrayList for training purposes, later converting to a database connection.
+    //UserService has CRUD operations.
+
+    private ArrayList<User> arrayList = new ArrayList<>();
     @Override
     public void addUser(User user) {
-        arrayList = new ArrayList<User>();
         arrayList.add(user);
     }
 
@@ -23,5 +25,10 @@ public class Service implements UserService {
     @Override
     public boolean userExist(String id) {
         return false;
+    }
+
+    @Override
+    public void deleteUser(String id) {
+
     }
 }
