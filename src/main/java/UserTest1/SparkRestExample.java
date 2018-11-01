@@ -21,11 +21,32 @@ public class SparkRestExample {
             return new Gson().toJson(new StandardResponse(StatusResponse.SUCCESS, user));  //After the user is added Success and user is displayed as a return.
         });
 
+        //Printing all users.
         get("/users", (req,res) -> {
            res.type("application/Json");
            return new Gson().toJson(
                    new StandardResponse(StatusResponse.SUCCESS,
                    new Gson().toJsonTree(userService.getUsers())));
+        });
+
+        //Printing user of certain id.
+        get("/users/:id", (req,res) -> {
+            res.type("application/json");
+            return new Gson().toJson(
+                    new StandardResponse(StatusResponse.SUCCESS, new Gson().toJsonTree(userService.getUser(req.params(":id")))));
+        });
+
+        //Checking if user exists
+        options("/users/:id", (req,res) ->{
+           res.type("application/json");
+           return new Gson().toJson(new StandardResponse(StatusResponse.SUCCESS,(userService.userExist(req.params(":id"))) ? "User exists" : "User does not exist"));
+        });
+
+        //Removing user of certain id.
+        delete("/users/:id", (req,res) -> {
+           res.type("application/json");
+           userService.deleteUser(req.params(":id"));
+           return new Gson().toJson(new StandardResponse(StatusResponse.SUCCESS));
         });
     }
 }
