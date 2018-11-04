@@ -28,13 +28,13 @@ public class SparkRestExample {
                    new Gson().toJsonTree(controller.getUsers())));
         });
 
-//        //Printing user of certain id.
-//        get("/users/:id", (req,res) -> {
-//            res.type("application/json");
-//            return new Gson().toJson(
-//                    new StandardResponse(StatusResponse.SUCCESS, new Gson().toJsonTree(controller.getUser(req.params(":id")))));
-//        });
-//
+        //Printing user of certain id.
+        get("/users/:id", (req,res) -> {
+            res.type("application/json");
+            return new Gson().toJson(
+                    new StandardResponse(StatusResponse.SUCCESS, new Gson().toJsonTree(controller.getUser(req.params(":id")))));
+        });
+
 //        //Checking if user exists
 //        options("/users/:id", (req,res) ->{
 //           res.type("application/json");

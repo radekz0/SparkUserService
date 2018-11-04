@@ -33,6 +33,25 @@ public class DbController implements CrudInterface{
 
     @Override
     public User getUser(String id) {
+        User foundUser;
+        String userId, userName;
+        String query = "SELECT * FROM users WHERE id = (?)";
+
+        try {
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, id); //Passing id into (?) in the query.
+            ResultSet resultSet = preparedStatement.executeQuery(); //Saving resultSet from a query.
+
+            userId = resultSet.getString(1);
+            userName = resultSet.getString(2);
+            foundUser = new User(userId,userName);  //Creating a User object to convert it to a Json object.
+
+            return foundUser;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
         return null;
     }
 
