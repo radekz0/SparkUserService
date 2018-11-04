@@ -19,15 +19,15 @@ public class SparkRestExample {
             controller.addUser(user);
             return new Gson().toJson(new StandardResponse(StatusResponse.SUCCESS, user));  //After the user is added Success and user is displayed as a return.
         });
-//
-//        //Printing all users.
-//        get("/users", (req,res) -> {
-//           res.type("application/Json");
-//           return new Gson().toJson(
-//                   new StandardResponse(StatusResponse.SUCCESS,
-//                   new Gson().toJsonTree(controller.getUsers())));
-//        });
-//
+
+        //Printing all users.
+        get("/users", (req,res) -> {
+           res.type("application/Json");
+           return new Gson().toJson(
+                   new StandardResponse(StatusResponse.SUCCESS,
+                   new Gson().toJsonTree(controller.getUsers())));
+        });
+
 //        //Printing user of certain id.
 //        get("/users/:id", (req,res) -> {
 //            res.type("application/json");

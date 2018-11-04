@@ -1,6 +1,7 @@
 package UserTest1;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 public class DbController implements CrudInterface{
     private Connection connection;
@@ -35,9 +36,30 @@ public class DbController implements CrudInterface{
         return null;
     }
 
+    //getUsers() will get the database content, pass it to the resultSet and then each element is saved to an arrayList.
+    //ArrayList is converted to a Json object and printed out.
     @Override
-    public void getUsers() {
+    public ArrayList<String> getUsers() {
+            String id, name, output;
+            ArrayList<String> arrayList = new ArrayList<>();
+            String query = "SELECT * FROM users";
 
+        try {
+            preparedStatement = connection.prepareStatement(query);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while(resultSet.next()){
+                id = resultSet.getString(1);    //Index 1 is the first column of the table.
+                name = resultSet.getString(2);  //Index 2 is the second column of the table.
+                output = (id + ": " + name);
+                arrayList.add(output);
+            }
+            return arrayList;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     @Override
