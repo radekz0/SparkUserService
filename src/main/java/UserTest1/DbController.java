@@ -83,6 +83,19 @@ public class DbController implements CrudInterface{
 
     @Override
     public boolean userExist(String id) {
+        String query = "SELECT * FROM users WHERE id = (?)";
+
+        try {
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while(resultSet.next()){    //Checking if it's anything in resultSet with passed id.
+                return true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return false;
     }
 
