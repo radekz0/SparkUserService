@@ -41,11 +41,11 @@ public class SparkRestExample {
            return new Gson().toJson(new StandardResponse(StatusResponse.SUCCESS,(controller.userExist(req.params(":id"))) ? "User exists" : "User does not exist"));
         });
 
-//        //Removing user of certain id.
-//        delete("/users/:id", (req,res) -> {
-//           res.type("application/json");
-//           controller.deleteUser(req.params(":id"));
-//           return new Gson().toJson(new StandardResponse(StatusResponse.SUCCESS));
-//        });
+        //Removing user of certain id.
+        delete("/users/:id", (req,res) -> {
+           res.type("application/json");
+           controller.deleteUser(req.params(":id"));
+           return new Gson().toJson(new StandardResponse(StatusResponse.SUCCESS));
+        });
     }
 }

@@ -25,7 +25,7 @@ public class DbController implements CrudInterface{
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1,user.getId());    //parameterIndex 1 equals first "?" etc.
             preparedStatement.setString(2,user.getName());
-            preparedStatement.executeUpdate();
+            preparedStatement.executeUpdate();  //executeUpdate() returns nothing while executeQuery() returns resultSet object.
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -99,9 +99,17 @@ public class DbController implements CrudInterface{
         return false;
     }
 
+    //Finds user with a certain id and removes it.
     @Override
     public void deleteUser(String id) {
+        String query = "DELETE FROM users WHERE id = (?)";
 
+        try {
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, id);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
-
 }
